@@ -1,52 +1,10 @@
 {
-  "contractName": "ERC721",
+  "contractName": "Destructible",
   "abi": [
     {
-      "constant": true,
-      "inputs": [],
-      "name": "name",
-      "outputs": [
-        {
-          "name": "_name",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getApproved",
-      "outputs": [
-        {
-          "name": "_operator",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
-      "inputs": [
-        {
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "approve",
+      "inputs": [],
+      "name": "renounceOwnership",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -55,11 +13,11 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "totalSupply",
+      "name": "owner",
       "outputs": [
         {
           "name": "",
-          "type": "uint256"
+          "type": "address"
         }
       ],
       "payable": false,
@@ -70,172 +28,55 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_from",
+          "name": "_newOwner",
           "type": "address"
-        },
-        {
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "name": "_tokenId",
-          "type": "uint256"
         }
       ],
-      "name": "transferFrom",
+      "name": "transferOwnership",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_owner",
-          "type": "address"
-        },
-        {
-          "name": "_index",
-          "type": "uint256"
-        }
-      ],
-      "name": "tokenOfOwnerByIndex",
-      "outputs": [
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_from",
-          "type": "address"
-        },
-        {
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "safeTransferFrom",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "exists",
-      "outputs": [
-        {
-          "name": "_exists",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_index",
-          "type": "uint256"
-        }
-      ],
-      "name": "tokenByIndex",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "ownerOf",
-      "outputs": [
-        {
-          "name": "_owner",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_owner",
-          "type": "address"
-        }
-      ],
-      "name": "balanceOf",
-      "outputs": [
-        {
-          "name": "_balance",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
       "inputs": [],
-      "name": "symbol",
-      "outputs": [
-        {
-          "name": "_symbol",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "constructor"
     },
     {
-      "constant": false,
+      "anonymous": false,
       "inputs": [
         {
-          "name": "_operator",
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipRenounced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
           "type": "address"
         },
         {
-          "name": "_approved",
-          "type": "bool"
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "setApprovalForAll",
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "destroy",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -245,142 +86,22 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_from",
+          "name": "_recipient",
           "type": "address"
-        },
-        {
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        },
-        {
-          "name": "_data",
-          "type": "bytes"
         }
       ],
-      "name": "safeTransferFrom",
+      "name": "destroyAndSend",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "tokenURI",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_owner",
-          "type": "address"
-        },
-        {
-          "name": "_operator",
-          "type": "address"
-        }
-      ],
-      "name": "isApprovedForAll",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_from",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transfer",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_owner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "_approved",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "Approval",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_owner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "_operator",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_approved",
-          "type": "bool"
-        }
-      ],
-      "name": "ApprovalForAll",
-      "type": "event"
     }
   ],
-  "metadata": "",
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
+  "metadata": "{\"compiler\":{\"version\":\"0.4.23+commit.124ca40d\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"destroy\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"destroyAndSend\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"}],\"name\":\"OwnershipRenounced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"destroy()\":{\"details\":\"Transfers the current balance to the owner and terminates the contract.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"_newOwner\":\"The address to transfer ownership to.\"}}},\"title\":\"Destructible\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/troycalandra/Dev/arcade_nft/contracts/CryptoArteSales.sol\":\"Destructible\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/troycalandra/Dev/arcade_nft/contracts/CryptoArteSales.sol\":{\"keccak256\":\"0x8c071b3edc3bbc038c8251a04bf17e9debee7888386b9a7583aa98e6cff4a21f\",\"urls\":[\"bzzr://7df9a3d0b2c710bd94e07030b78ea66b540950f2b26d685d4f7a777d6ab1b8f8\"]}},\"version\":1}",
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061053a806100536000396000f30060806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a61461007257806383197ef0146100895780638da5cb5b146100a0578063f2fde38b146100f7578063f5074f411461013a575b600080fd5b34801561007e57600080fd5b5061008761017d565b005b34801561009557600080fd5b5061009e61027f565b005b3480156100ac57600080fd5b506100b5610314565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561010357600080fd5b50610138600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610339565b005b34801561014657600080fd5b5061017b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506103a0565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101d857600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102da57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561039457600080fd5b61039d81610414565b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156103fb57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff16ff5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561045057600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058208362f85038f572e8bfab8ae10e21c0b30a73570a4464e7fa1d001bcf2a3d682e0029",
+  "deployedBytecode": "0x60806040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a61461007257806383197ef0146100895780638da5cb5b146100a0578063f2fde38b146100f7578063f5074f411461013a575b600080fd5b34801561007e57600080fd5b5061008761017d565b005b34801561009557600080fd5b5061009e61027f565b005b3480156100ac57600080fd5b506100b5610314565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561010357600080fd5b50610138600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610339565b005b34801561014657600080fd5b5061017b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506103a0565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156101d857600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102da57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561039457600080fd5b61039d81610414565b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156103fb57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff16ff5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561045057600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058208362f85038f572e8bfab8ae10e21c0b30a73570a4464e7fa1d001bcf2a3d682e0029",
+  "sourceMap": "4882:336:0:-;;;2940:10;2932:5;;:18;;;;;;;;;;;;;;;;;;4882:336;;;;;;",
+  "deployedSourceMap": "4882:336:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3192:111;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3192:111:0;;;;;;5050:66;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5050:66:0;;;;;;2603:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2603:20:0;;;;;;;;;;;;;;;;;;;;;;;;;;;3465:103;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3465:103:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;5120:96;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5120:96:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;3192:111;3084:5;;;;;;;;;;;3070:19;;:10;:19;;;3062:28;;;;;;;;3268:5;;;;;;;;;;;3249:25;;;;;;;;;;;;3296:1;3280:5;;:18;;;;;;;;;;;;;;;;;;3192:111::o;5050:66::-;3084:5;;;;;;;;;;;3070:19;;:10;:19;;;3062:28;;;;;;;;5105:5;;;;;;;;;;;5092:19;;;2603:20;;;;;;;;;;;;;:::o;3465:103::-;3084:5;;;;;;;;;;;3070:19;;:10;:19;;;3062:28;;;;;;;;3534:29;3553:9;3534:18;:29::i;:::-;3465:103;:::o;5120:96::-;3084:5;;;;;;;;;;;3070:19;;:10;:19;;;3062:28;;;;;;;;5200:10;5187:24;;;3703:171;3794:1;3773:23;;:9;:23;;;;3765:32;;;;;;;;3836:9;3808:38;;3829:5;;;;;;;;;;;3808:38;;;;;;;;;;;;3860:9;3852:5;;:17;;;;;;;;;;;;;;;;;;3703:171;:::o",
   "source": "pragma solidity ^0.4.23;\n\n\n/**\n * @title ERC721 Non-Fungible Token Standard basic interface\n * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Basic {\n  event Transfer(\n    address indexed _from,\n    address indexed _to,\n    uint256 _tokenId\n  );\n  event Approval(\n    address indexed _owner,\n    address indexed _approved,\n    uint256 _tokenId\n  );\n  event ApprovalForAll(\n    address indexed _owner,\n    address indexed _operator,\n    bool _approved\n  );\n\n  function balanceOf(address _owner) public view returns (uint256 _balance);\n  function ownerOf(uint256 _tokenId) public view returns (address _owner);\n  function exists(uint256 _tokenId) public view returns (bool _exists);\n\n  function approve(address _to, uint256 _tokenId) public;\n  function getApproved(uint256 _tokenId)\n    public view returns (address _operator);\n\n  function setApprovalForAll(address _operator, bool _approved) public;\n  function isApprovedForAll(address _owner, address _operator)\n    public view returns (bool);\n\n  function transferFrom(address _from, address _to, uint256 _tokenId) public;\n  function safeTransferFrom(address _from, address _to, uint256 _tokenId)\n    public;\n\n  function safeTransferFrom(\n    address _from,\n    address _to,\n    uint256 _tokenId,\n    bytes _data\n  )\n    public;\n}\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Enumerable is ERC721Basic {\n  function totalSupply() public view returns (uint256);\n  function tokenOfOwnerByIndex(\n    address _owner,\n    uint256 _index\n  )\n    public\n    view\n    returns (uint256 _tokenId);\n\n  function tokenByIndex(uint256 _index) public view returns (uint256);\n}\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional metadata extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Metadata is ERC721Basic {\n  function name() public view returns (string _name);\n  function symbol() public view returns (string _symbol);\n  function tokenURI(uint256 _tokenId) public view returns (string);\n}\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, full implementation interface\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721 is ERC721Basic, ERC721Enumerable, ERC721Metadata {\n}\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\ncontract Ownable {\n  address public owner;\n\n\n  event OwnershipRenounced(address indexed previousOwner);\n  event OwnershipTransferred(\n    address indexed previousOwner,\n    address indexed newOwner\n  );\n\n\n  /**\n   * @dev The Ownable constructor sets the original `owner` of the contract to the sender\n   * account.\n   */\n  constructor() public {\n    owner = msg.sender;\n  }\n\n  /**\n   * @dev Throws if called by any account other than the owner.\n   */\n  modifier onlyOwner() {\n    require(msg.sender == owner);\n    _;\n  }\n\n  /**\n   * @dev Allows the current owner to relinquish control of the contract.\n   */\n  function renounceOwnership() public onlyOwner {\n    emit OwnershipRenounced(owner);\n    owner = address(0);\n  }\n\n  /**\n   * @dev Allows the current owner to transfer control of the contract to a newOwner.\n   * @param _newOwner The address to transfer ownership to.\n   */\n  function transferOwnership(address _newOwner) public onlyOwner {\n    _transferOwnership(_newOwner);\n  }\n\n  /**\n   * @dev Transfers control of the contract to a newOwner.\n   * @param _newOwner The address to transfer ownership to.\n   */\n  function _transferOwnership(address _newOwner) internal {\n    require(_newOwner != address(0));\n    emit OwnershipTransferred(owner, _newOwner);\n    owner = _newOwner;\n  }\n}\n\n/**\n * @title Pausable\n * @dev Base contract which allows children to implement an emergency stop mechanism.\n */\ncontract Pausable is Ownable {\n  event Pause();\n  event Unpause();\n\n  bool public paused = false;\n\n\n  /**\n   * @dev Modifier to make a function callable only when the contract is not paused.\n   */\n  modifier whenNotPaused() {\n    require(!paused);\n    _;\n  }\n\n  /**\n   * @dev Modifier to make a function callable only when the contract is paused.\n   */\n  modifier whenPaused() {\n    require(paused);\n    _;\n  }\n\n  /**\n   * @dev called by the owner to pause, triggers stopped state\n   */\n  function pause() onlyOwner whenNotPaused public {\n    paused = true;\n    emit Pause();\n  }\n\n  /**\n   * @dev called by the owner to unpause, returns to normal state\n   */\n  function unpause() onlyOwner whenPaused public {\n    paused = false;\n    emit Unpause();\n  }\n}\n\n/**\n * @title Destructible\n * @dev Base contract that can be destroyed by owner. All funds in contract will be sent to the owner.\n */\ncontract Destructible is Ownable {\n\n  constructor() public payable { }\n\n  /**\n   * @dev Transfers the current balance to the owner and terminates the contract.\n   */\n  function destroy() onlyOwner public {\n    selfdestruct(owner);\n  }\n\n  function destroyAndSend(address _recipient) onlyOwner public {\n    selfdestruct(_recipient);\n  }\n}\n\n\n/**\n * @title CryptoArteSales\n * CryptoArteSales - a sales contract for CryptoArte non-fungible tokens \n * corresponding to paintings from the www.cryptoarte.io collection\n */\ncontract CryptoArteSales is Ownable, Pausable, Destructible {\n\n    event Sent(address indexed payee, uint256 amount, uint256 balance);\n    event Received(address indexed payer, uint tokenId, uint256 amount, uint256 balance);\n\n    ERC721 public nftAddress;\n    uint256 public currentPrice;\n    string public logs;\n    string public logs1;\n    string public logs2;\n    string public logs3;\n\n\n    /**\n    * @dev Contract Constructor\n    * @param _nftAddress address for Crypto Arte non-fungible token contract \n    * @param _currentPrice initial sales price\n    */\n    constructor(address _nftAddress, uint256 _currentPrice) public { \n        require(_nftAddress != address(0) && _nftAddress != address(this));\n        require(_currentPrice > 0);\n        nftAddress = ERC721(_nftAddress);\n        currentPrice = _currentPrice;\n        logs = 'constructor';\n    }\n\n    /**\n    * @dev Purchase _tokenId\n    * @param _tokenId uint256 token ID (painting number)\n    */\n    function purchaseToken(uint256 _tokenId) public payable {\n        logs1 = 'purchaseToken';\n        require(msg.sender != address(0) && msg.sender != address(this));\n        logs2 = 'first req passed';\n        require(msg.value >= currentPrice);\n        logs3 = 'second req passed';\n        address tokenSeller = nftAddress.ownerOf(_tokenId);\n        nftAddress.safeTransferFrom(tokenSeller, msg.sender, _tokenId);\n        emit Received(msg.sender, _tokenId, msg.value, address(this).balance);\n    }\n\n    /**\n    * @dev send / withdraw _amount to _payee\n    */\n    function sendTo(address _payee, uint256 _amount) public onlyOwner {\n        require(_payee != address(0) && _payee != address(this));\n        require(_amount > 0 && _amount <= address(this).balance);\n        _payee.transfer(_amount);\n        emit Sent(_payee, _amount, address(this).balance);\n    }    \n\n    /**\n    * @dev Updates _currentPrice\n    * @dev Throws if _currentPrice is zero\n    */\n    function setCurrentPrice(uint256 _currentPrice) public onlyOwner {\n        require(_currentPrice > 0);\n        currentPrice = _currentPrice;\n    }        \n\n}",
   "sourcePath": "/Users/troycalandra/Dev/arcade_nft/contracts/CryptoArteSales.sol",
   "ast": {
@@ -14868,10 +14589,23 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-06-18T19:43:23.039Z",
+  "updatedAt": "2021-06-18T19:43:23.035Z",
   "devdoc": {
-    "methods": {},
-    "title": "ERC-721 Non-Fungible Token Standard, full implementation interface"
+    "methods": {
+      "destroy()": {
+        "details": "Transfers the current balance to the owner and terminates the contract."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "_newOwner": "The address to transfer ownership to."
+        }
+      }
+    },
+    "title": "Destructible"
   },
   "userdoc": {
     "methods": {}

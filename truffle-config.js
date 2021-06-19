@@ -12,7 +12,8 @@ module.exports = {
     ropsten: { // ropsten
       provider: () => new HDWalletProvider('REPLACE_ME_WITH_ID_AND_URI', 'REPLACE_ME_WITH_ID_AND_URI'),
       network_id: 3, // Ropsten's id
-      gas: 8000000, // Ropsten has a lower block limit than mainnet
+      gas: 8000000, // Ropsten has a lower block limit than mainnet,
+      gasPrice: 100000000000,
     },
     goerli: { // goerli
       provider: () => new HDWalletProvider('REPLACE_ME_WITH_ID_AND_URI', 'REPLACE_ME_WITH_ID_AND_URI'),
