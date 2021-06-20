@@ -19,10 +19,10 @@ contract Sales is Ownable, Pausable {
     uint256 public currentPrice;
 
     /**
-    * @dev Contract Constructor
-    * @param _nftAddress address for Crypto Arte non-fungible token contract 
-    * @param _currentPrice initial sales price
-    */
+     * @dev Contract Constructor
+     * @param _nftAddress address for Crypto Arte non-fungible token contract 
+     * @param _currentPrice initial sales price
+     */
     constructor(address _nftAddress, uint256 _currentPrice) { 
         require(_nftAddress != address(0) && _nftAddress != address(this));
         require(_currentPrice > 0);
@@ -31,9 +31,9 @@ contract Sales is Ownable, Pausable {
     }
 
     /**
-    * @dev Purchase _tokenId
-    * @param _tokenId uint256 token ID
-    */
+     * @dev Purchase _tokenId
+     * @param _tokenId uint256 token ID
+     */
     function purchaseToken(uint256 _tokenId) public payable {
         require(msg.sender != address(0) && msg.sender != address(this));
         require(msg.value >= currentPrice);
@@ -43,8 +43,10 @@ contract Sales is Ownable, Pausable {
     }
 
     /**
-    * @dev send / withdraw _amount to _payee
-    */
+     * @dev send / withdraw _amount to _payee
+     * @param _payee address withdraw to address
+     * @param _amount uint256 amount to withdraw
+     */
     function sendTo(address _payee, uint256 _amount) public payable onlyOwner {
         require(_payee != address(0) && _payee != address(this));
         require(_amount > 0 && _amount <= address(this).balance);
@@ -53,8 +55,8 @@ contract Sales is Ownable, Pausable {
     }    
 
     /**
-    * @dev Update _currentPrice
-    */
+     * @dev Update _currentPrice price of token
+     */
     function setCurrentPrice(uint256 _currentPrice) public onlyOwner {
         require(_currentPrice > 0);
         currentPrice = _currentPrice;
