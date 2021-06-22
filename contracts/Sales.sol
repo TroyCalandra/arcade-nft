@@ -34,7 +34,7 @@ contract Sales is Ownable, Pausable {
      * @dev Purchase _tokenId
      * @param _tokenId uint256 token ID
      */
-    function purchaseToken(uint256 _tokenId) public payable {
+    function purchaseToken(uint256 _tokenId) public payable whenNotPaused {
         require(msg.sender != address(0) && msg.sender != address(this));
         require(msg.value >= currentPrice);
         address tokenSeller = nftAddress.ownerOf(_tokenId);
