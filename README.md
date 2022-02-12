@@ -10,4 +10,4 @@
 
 **Run Purchase Flow Script**
 
-`$ truffle exec ./sales-flow.js --network ropsten`
+`$ truffle exec ./return-tokens.js --network ropsten`
