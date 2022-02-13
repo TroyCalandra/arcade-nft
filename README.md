@@ -9,3 +9,7 @@
 **Run Purchase Flow Script**
 
 `$ truffle exec ./set-metadata.js --network ropsten`
+
+**Verify Contracts On Etherscan**
+
+`$ truffle run verify Arcade Sales --network ropsten`
