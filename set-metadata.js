@@ -11,7 +11,7 @@ module.exports = async function(callback) {
     'https://gateway.pinata.cloud/ipfs/QmcGPmWFVA2iQcUMAZn7paFCFJgWEnQ7ignq1qnRhbDm6V/space-invaders-purp-aliens.json'
   ];
 
-  for (let i = 26; i < 30; i++) {
+  for (let i = 0; i < 2; i++) {
     if (true || await arcade.tokenURI(i) === '') {
       await arcade.setTokenURI(i, tokenURIs[i%4])
       console.log('set ', i)

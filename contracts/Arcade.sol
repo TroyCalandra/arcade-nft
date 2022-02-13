@@ -5,9 +5,9 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 
-contract NewArcade is ERC721URIStorage, ERC721Enumerable {
+contract Arcade is ERC721URIStorage, ERC721Enumerable {
     string baseURI;
-    constructor() ERC721("NewArcade", "NEWARCADE") {}
+    constructor() ERC721("Arcade", "ARCADE") {}
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
         internal

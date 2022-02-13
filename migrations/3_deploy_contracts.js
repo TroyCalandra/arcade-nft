@@ -1,5 +1,5 @@
 const Sales = artifacts.require("Sales");
 
 module.exports = function(deployer) {
-  deployer.deploy(Sales, "0x2952B7A89a567a89C49f3F0511Bc4946bEcA3FF1", 200);
+  deployer.deploy(Sales, "0x932840267B9CA7B5521d9be0dDA6fCB4e6FF6547", 200);
 };
